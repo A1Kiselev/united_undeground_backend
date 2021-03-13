@@ -4,8 +4,8 @@
   "description": "",
   "main": "app.js",
   "scripts": {
-    "start": "node public/app.js",
-    "dev": "nodemon src/app.ts",
+    "start": "node ../server-vercel/app.js",
+    "dev": "nodemon src/index.ts",
     "build": "tsc -p ."
   },
   "keywords": [],
