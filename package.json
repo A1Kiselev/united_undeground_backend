@@ -2,9 +2,9 @@
   "name": "united_undegroun_backend",
   "version": "1.0.0",
   "description": "",
-  "main": "app.js",
+  "main": "index.js",
   "scripts": {
-    "start": "node ../server-vercel/app.js",
+    "start": "node /IdeaProjects/united_undeground_backfinal/index.js",
     "dev": "nodemon src/index.ts",
     "build": "tsc -p ."
   },

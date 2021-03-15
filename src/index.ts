@@ -1,20 +1,22 @@
-import express, { Application, Request, Response } from 'express';
-import someData from "./Utils/SomeData";
+import express, { Application } from 'express';
+import router from "./routes/Routes";
+import openDatabaseConnection from "./mongo/mongo";
 
 const port: number = 5000;
-const index: Application = express();
+const app: Application = express();
 
-const add = (a: number, b: number): number => a + b;
+app.use(router);
 
-index.get('/', (req: Request, res: Response) => {
-  const response: string = JSON.stringify({ data: someData, add: add(5, 6) });
-  res.send(response);
-})
+const start = async () => {
+  try {
+    await openDatabaseConnection();
 
-// index.get('/', (req: Request, res: Response) => {
-//   res.send('response');
-// })
+    app.listen(port, () => {
+      console.log(`Server running on port ${port}`);
+    })
+  } catch (e) {
+    console.log(e);
+  }
+}
 
-index.listen(port, () => {
-  console.log(`Server running on port ${port}`);
-})
+start();
