@@ -1,26 +1,22 @@
 import mongoose, { Schema, Document } from "mongoose";
+import ResourceTypes from "../enums/ResourceTypes";
 
-export interface iResources extends Document {
-  type: Schema.Types.String,
-  name: Schema.Types.String,
-  resourcesLevel: Schema.Types.Number
+export interface iResource extends Document {
+  name: string,
+  type: ResourceTypes,
 }
 
 const resourcesSchema = new Schema({
-  type: {
-    type: Schema.Types.String,
-    required: true
-  },
   name: {
     type: Schema.Types.String,
     required: true
   },
-  resourcesLevel: {
-    type: Schema.Types.Number,
+  type: {
+    type: Schema.Types.String,
     required: true
   }
 });
 
-const ResourceModel = mongoose.model<iResources>("Resource", resourcesSchema);
+const ResourceModel = mongoose.model<iResource>("Resource", resourcesSchema);
 
 export default ResourceModel;
